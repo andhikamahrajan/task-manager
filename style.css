@@ -1,0 +1,75 @@
+:root {
+  --aksen: #2F5BEA;
+  --latar: #F6F7F9;
+  --putih: #FFFFFF;
+  --teks: #14181F;
+  --teks-redup: #5B6472;
+  --garis: #E3E6EB;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--latar);
+  color: var(--teks);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', system-ui, sans-serif;
+}
+
+.header {
+  background: var(--putih);
+  border-bottom: 1px solid var(--garis);
+  min-height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+.tanggal {
+  font-size: 14px;
+  color: var(--teks-redup);
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.subjudul {
+  margin: 8px 0 28px;
+  color: var(--teks-redup);
+  line-height: 1.5;
+}
+
+.kartu {
+  background: var(--putih);
+  border: 1px solid var(--garis);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
