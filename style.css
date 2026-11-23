@@ -73,3 +73,73 @@ h1 {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+.form-tambah {
+  position: relative; 
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.form-tambah input {
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid #C9CED8;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--teks);
+  background: var(--putih);
+}
+
+.form-tambah input[type="text"] {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.tombol-tambah {
+  min-height: 48px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--aksen);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 16px; 
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter {
+  padding: 0 20px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-button {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid #C9CED8;
+  border-radius: 999px;
+  background: var(--putih);
+  color: #3A4352;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.filter button-terpilih {
+  background: var(--aksen);
+  border-color: var(--aksen);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--teks);
+  outline-offset: 2px;
+}
