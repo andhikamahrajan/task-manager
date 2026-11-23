@@ -144,3 +144,92 @@ input:focus-visible {
   outline-offset: 2px;
 }
 
+.daftar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tugas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 8px 12px 8px 20px;
+  border-top: 1px solid var(--garis);
+}
+
+.tugas input[type="checkbox"] {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--aksen);
+}
+
+.tugas label {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 0;
+  font-size: 16px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.tugas.selesai label {
+  color: var(--teks-redup);
+  text-decoration: line-through;
+}
+
+.badge {
+  flex: none;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #EEF1F5;
+  color: #3A4352;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.badge-hari-ini {
+  background: #FFF1E3;
+  color: #9A4A07;
+}
+
+.hapus {
+  flex: none;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--teks-redup);
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.footer-kartu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-height: 60px;
+  padding: 8px 12px 8px 20px;
+  border-top: 1px solid var(--garis);
+  font-size: 14px;
+  color: var(--teks-redup);
+}
+
+.hapus-selesai {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--aksen);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
