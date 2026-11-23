@@ -2,9 +2,75 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Task Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugasku</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Halo dunia</h1>
+  <header class="header">
+    <span class="logo">Tugasku</span>
+    <span class="tanggal">Senin, 23 November</span>
+  </header>
+
+  <main class="container">
+    <h1>Tugas kamu</h1>
+    <p class="subjudul">Catat, centang, selesai. Semua tugas kuliah dan lamaran di satu tempat.</p>
+
+    <section class="kartu">
+      <form class="form-tambah">
+        <label for="judul" class="sr-only">Nama tugas</label>
+        <input id="judul" type="text" placeholder="Tambah tugas baru">
+
+        <label for="tenggat" class="sr-only">Tenggat (opsional)</label>
+        <input id="tenggat" type="date">
+
+        <button type="submit" class="tombol-tambah">Tambah</button>
+      </form>
+
+      <div class="filter">
+        <button type="button" class="terpilih">Semua 5</button>
+        <button type="button">Aktif 3</button>
+        <button type="button">Selesai 2</button>
+      </div>
+
+      <ul class="daftar">
+        <li class="tugas">
+          <input id="t1" type="checkbox">
+          <label for="t1">Kerjakan laporan praktikum basis data</label>
+          <span class="badge badge-hari-ini">Hari ini</span>
+          <button type="button" class="hapus">Hapus</button>
+        </li>
+        <li class="tugas">
+          <input id="t2" type="checkbox">
+          <label for="t2">Kirim berkas pendaftaran MagangHub</label>
+          <span class="badge">27 Nov</span>
+          <button type="button" class="hapus">Hapus</button>
+        </li>
+        <li class="tugas">
+          <input id="t3" type="checkbox">
+          <label for="t3">Belajar dasar JavaScript</label>
+          <span class="badge">25 Nov</span>
+          <button type="button" class="hapus">Hapus</button>
+        </li>
+        <li class="tugas selesai">
+          <input id="t4" type="checkbox" checked>
+          <label for="t4">Setup Git dan GitHub</label>
+          <span class="badge">23 Nov</span>
+          <button type="button" class="hapus">Hapus</button>
+        </li>
+        <li class="tugas selesai">
+          <input id="t5" type="checkbox" checked>
+          <label for="t5">Buat repo task-manager</label>
+          <span class="badge">23 Nov</span>
+          <button type="button" class="hapus">Hapus</button>
+        </li>
+      </ul>
+
+      <div class="footer-kartu">
+        <span>3 tugas tersisa</span>
+        <button type="button" class="hapus-selesai">Hapus yang selesai</button>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
