@@ -152,3 +152,17 @@ elDaftar.addEventListener("change", function (event) {
 
   tampilkanDaftar();
 });
+
+elDaftar.addEventListener("click", function (event) {
+  if (!event.target.classList.contains("hapus")) {
+    return;
+  }
+
+  const id = Number(event.target.closest("li").dataset.id);
+
+  daftarTugas = daftarTugas.filter(function (tugas) {
+    return tugas.id !== id;
+  });
+
+  tampilkanDaftar();
+});
