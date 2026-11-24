@@ -22,12 +22,36 @@ function perbaruiSisa() {
 }
 
 const elDaftar = document.getElementById("daftar");
+let filterAktif = "semua";
+const tombolFilter = document.querySelectorAll(".filter button");
+
+function perbaruiFilter() {
+  const jumlahSisa = hitungSisa();
+  const label = {
+    semua: "Semua " + daftarTugas.length,
+    aktif: "Aktif " + jumlahSisa,
+    selesai: "Selesai " + (daftarTugas.length - jumlahSisa)
+  };
+
+  for (let i = 0; i < tombolFilter.length; i++) {
+    const jenis = tombolFilter[i].dataset.filter;
+    tombolFilter[i].textContent = label[jenis];
+    tombolFilter[i].classList.toggle("terpilih", jenis === filterAktif);
+    tombolFilter[i].setAttribute("aria-pressed", jenis === filterAktif);
+  }
+}
 
 function tampilkanDaftar() {
   elDaftar.innerHTML = "";
 
   for (let i = 0; i < daftarTugas.length; i++) {
     const tugas = daftarTugas[i];
+    if (filterAktif === "aktif" && tugas.selesai) {
+  continue;
+}
+if (filterAktif === "selesai" && !tugas.selesai) {
+  continue;
+}
 
     const li = document.createElement("li"); 
     li.dataset.id = tugas.id;
@@ -51,6 +75,7 @@ function tampilkanDaftar() {
     elDaftar.appendChild(li);
   }
  perbaruiSisa();
+ perbaruiFilter();
 }
 
 tampilkanDaftar();
@@ -164,5 +189,15 @@ elDaftar.addEventListener("click", function (event) {
     return tugas.id !== id;
   });
 
+  tampilkanDaftar();
+});
+
+document.querySelector(".filter").addEventListener("click", function (event) {
+  const jenis = event.target.dataset.filter;
+  if (jenis === undefined) {
+    return;
+  }
+
+  filterAktif = jenis;
   tampilkanDaftar();
 });
