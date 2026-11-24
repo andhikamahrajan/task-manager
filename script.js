@@ -1,4 +1,4 @@
-let daftarTugas = [
+const dataAwal = [
     {id: 1, judul: "Rapikan Readme", tenggat: "Hari ini", selesai: false},
     {id: 2, judul: "Kerjakan laporan praktikum basis data", tenggat: "Hari ini", selesai: false},
     {id: 3, judul: "Kirim berkas pendaftaran Maganghub", tenggat: "27 Nov", selesai: false},
@@ -6,6 +6,35 @@ let daftarTugas = [
     {id: 5, judul: "Setup Git dan GitHub", tenggat: "23 Nov", selesai: true},
     {id: 6, judul: "Buat repo task-manager", tenggat: "23 Nov", selesai: true}
 ];
+
+function muatData() {
+  try {
+    const tersimpan = localStorage.getItem("daftarTugas");
+    if (tersimpan !== null) {
+      return JSON.parse(tersimpan);
+    }
+  } catch (error) {
+    console.log("Gagal membaca data tersimpan", error);
+  }
+  return dataAwal;
+}
+
+function simpanData() {
+  try {
+    localStorage.setItem("daftarTugas", JSON.stringify(daftarTugas));
+  } catch (error) {
+    console.log("Gagal menyimpan data", error);
+  }
+}
+
+let daftarTugas = muatData();
+
+let idBerikutnya = 1;
+for (let i = 0; i < daftarTugas.length; i++) {
+  if (daftarTugas[i].id >= idBerikutnya) {
+    idBerikutnya = daftarTugas[i].id + 1;
+  }
+}
 
 function hitungSisa() {
     let sisa = 0;
@@ -76,6 +105,7 @@ if (filterAktif === "selesai" && !tugas.selesai) {
   }
  perbaruiSisa();
  perbaruiFilter();
+ simpanData();
 }
 
 tampilkanDaftar();
@@ -84,7 +114,6 @@ const formTambah = document.querySelector(".form-tambah");
 const inputJudul = document.getElementById("judul");
 const inputTenggat = document.getElementById("tenggat");
 
-let idBerikutnya = 6;
 
 formTambah.addEventListener("submit", function (event) {
   event.preventDefault();
