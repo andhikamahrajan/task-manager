@@ -109,4 +109,30 @@ elDaftar.addEventListener("click", function (event) {
   });
 
   tampilkanDaftar();
+
+const formTambah = document.querySelector(".form-tambah");
+const inputJudul = document.getElementById("judul");
+const inputTenggat = document.getElementById("tenggat");
+
+let idBerikutnya = 6;
+
+formTambah.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const judul = inputJudul.value.trim();
+  if (judul === "") {
+    return;
+  }
+
+  daftarTugas.push({
+    id: idBerikutnya,
+    judul: judul,
+    tenggat: inputTenggat.value || "Tanpa tenggat",
+    selesai: false
+  });
+  idBerikutnya = idBerikutnya + 1;
+
+  formTambah.reset();
+  tampilkanDaftar();
+});
 });
