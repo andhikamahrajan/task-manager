@@ -1,4 +1,4 @@
-const daftarTugas = [
+let daftarTugas = [
     {id: 1, judul: "Rapikan Readme", tenggat: "Hari ini", selesai: false},
     {id: 2, judul: "Kerjakan laporan praktikum basis data", tenggat: "Hari ini", selesai: false},
     {id: 3, judul: "Kirim berkas pendaftaran Maganghub", tenggat: "27 Nov", selesai: false},
@@ -27,7 +27,8 @@ function tampilkanDaftar() {
   for (let i = 0; i < daftarTugas.length; i++) {
     const tugas = daftarTugas[i];
 
-    const li = document.createElement("li");
+    const li = document.createElement("li"); 
+    li.dataset.id = tugas.id;
     li.className = tugas.selesai ? "tugas selesai" : "tugas";
 
     li.innerHTML = `
@@ -47,8 +48,35 @@ function tampilkanDaftar() {
 
     elDaftar.appendChild(li);
   }
+    function perbaruiSisa() {
+  document.getElementById("sisa").textContent = hitungSisa() + " tugas tersisa";
+}
 }
 
 tampilkanDaftar();
 
-document.getElementById("sisa").textContent = hitungSisa() + " tugas tersisa";
+const formTambah = document.querySelector(".form-tambah");
+const inputJudul = document.getElementById("judul");
+const inputTenggat = document.getElementById("tenggat");
+
+let idBerikutnya = 6;
+
+formTambah.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const judul = inputJudul.value.trim();
+  if (judul === "") {
+    return;
+  }
+
+  daftarTugas.push({
+    id: idBerikutnya,
+    judul: judul,
+    tenggat: inputTenggat.value || "Tanpa tenggat",
+    selesai: false
+  });
+  idBerikutnya = idBerikutnya + 1;
+
+  formTambah.reset();
+  tampilkanDaftar();
+});
