@@ -136,3 +136,19 @@ formTambah.addEventListener("submit", function (event) {
   tampilkanDaftar();
 });
 });
+
+elDaftar.addEventListener("change", function (event) {
+  if (event.target.type !== "checkbox") {
+    return;
+  }
+
+  const id = Number(event.target.closest("li").dataset.id);
+
+  for (let i = 0; i < daftarTugas.length; i++) {
+    if (daftarTugas[i].id === id) {
+      daftarTugas[i].selesai = event.target.checked;
+    }
+  }
+
+  tampilkanDaftar();
+});
