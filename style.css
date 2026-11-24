@@ -233,3 +233,51 @@ input:focus-visible {
   font-weight: 600;
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  .header {
+    padding: 0 20px;
+  }
+
+  .container {
+    padding: 24px 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .form-tambah {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .form-tambah input[type="text"] {
+    flex: none;
+    width: 100%;
+  }
+
+  .filter {
+    padding: 0 16px 12px;
+    flex-wrap: nowrap;
+  }
+
+  .filter-button {
+    flex: 1;
+    padding: 0 8px;
+  }
+
+  .tugas {
+    gap: 10px;
+    min-height: 60px;
+    padding: 6px 4px 6px 16px;
+  }
+
+  .tugas label {
+    font-size: 15px;
+  }
+
+  .hapus {
+    padding: 0 8px;
+  }
+}
