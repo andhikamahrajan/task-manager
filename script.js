@@ -17,7 +17,9 @@ function hitungSisa() {
     return sisa;
 }
 
-console.log(hitungSisa());
+function perbaruiSisa() {
+  document.getElementById("sisa").textContent = hitungSisa() + " tugas tersisa";
+}
 
 const elDaftar = document.getElementById("daftar");
 
@@ -48,9 +50,7 @@ function tampilkanDaftar() {
 
     elDaftar.appendChild(li);
   }
-    function perbaruiSisa() {
-  document.getElementById("sisa").textContent = hitungSisa() + " tugas tersisa";
-}
+ perbaruiSisa();
 }
 
 tampilkanDaftar();
@@ -78,5 +78,35 @@ formTambah.addEventListener("submit", function (event) {
   idBerikutnya = idBerikutnya + 1;
 
   formTambah.reset();
+  tampilkanDaftar();
+});
+
+elDaftar.addEventListener("change", function (event) {
+  if (event.target.type !== "checkbox") {
+    return;
+  }
+
+  const id = Number(event.target.closest("li").dataset.id);
+
+  for (let i = 0; i < daftarTugas.length; i++) {
+    if (daftarTugas[i].id === id) {
+      daftarTugas[i].selesai = event.target.checked;
+    }
+  }
+
+  tampilkanDaftar();
+});
+
+elDaftar.addEventListener("click", function (event) {
+  if (!event.target.classList.contains("hapus")) {
+    return;
+  }
+
+  const id = Number(event.target.closest("li").dataset.id);
+
+  daftarTugas = daftarTugas.filter(function (tugas) {
+    return tugas.id !== id;
+  });
+
   tampilkanDaftar();
 });
