@@ -1,10 +1,10 @@
 const dataAwal = [
-    {id: 1, judul: "Rapikan Readme", tenggat: "Hari ini", selesai: false},
-    {id: 2, judul: "Kerjakan laporan praktikum basis data", tenggat: "Hari ini", selesai: false},
-    {id: 3, judul: "Kirim berkas pendaftaran Maganghub", tenggat: "27 Nov", selesai: false},
-    {id: 4, judul: "Belajar dasar JavaScript", tenggat: "25 Nov", selesai: true},
-    {id: 5, judul: "Setup Git dan GitHub", tenggat: "23 Nov", selesai: true},
-    {id: 6, judul: "Buat repo task-manager", tenggat: "23 Nov", selesai: true}
+    {id: 1, judul: "Rapikan Readme", tenggat: "2026-11-25", selesai: false},
+    {id: 2, judul: "Kerjakan laporan praktikum basis data", tenggat: "2026-11-25", selesai: false},
+    {id: 3, judul: "Kirim berkas pendaftaran Maganghub", tenggat: "2026-11-27", selesai: false},
+    {id: 4, judul: "Belajar dasar JavaScript", tenggat: "2026-11-25", selesai: true},
+    {id: 5, judul: "Setup Git dan GitHub", tenggat: "2026-11-23", selesai: true},
+    {id: 6, judul: "Buat repo task-manager", tenggat: "2026-11-23", selesai: true}
 ];
 
 function muatData() {
@@ -70,6 +70,30 @@ function perbaruiFilter() {
   }
 }
 
+const namaBulan = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+
+function formatTenggat(tenggat) {
+  if (tenggat === "") {
+    return "Tanpa tenggat";
+  }
+
+  const bagian = tenggat.split("-");
+  if (bagian.length !== 3) {
+    return tenggat;
+  }
+
+  const tahun = Number(bagian[0]);
+  const bulan = Number(bagian[1]);
+  const hari = Number(bagian[2]);
+
+  const sekarang = new Date();
+  if (tahun === sekarang.getFullYear() && bulan === sekarang.getMonth() + 1 && hari === sekarang.getDate()) {
+    return "Hari ini";
+  }
+
+  return hari + " " + namaBulan[bulan - 1];
+}
+
 function tampilkanDaftar() {
   elDaftar.innerHTML = "";
 
@@ -95,9 +119,10 @@ if (filterAktif === "selesai" && !tugas.selesai) {
 
     li.querySelector("label").textContent = tugas.judul;
 
+    const teksTenggat = formatTenggat(tugas.tenggat);
     const badge = li.querySelector(".badge");
-    badge.textContent = tugas.tenggat;
-    if (tugas.tenggat === "Hari ini") {
+    badge.textContent = teksTenggat;
+    if (teksTenggat === "Hari ini") {
       badge.classList.add("badge-hari-ini");
     }
 
@@ -126,7 +151,7 @@ formTambah.addEventListener("submit", function (event) {
   daftarTugas.push({
     id: idBerikutnya,
     judul: judul,
-    tenggat: inputTenggat.value || "Tanpa tenggat",
+    tenggat: inputTenggat.value,
     selesai: false
   });
   idBerikutnya = idBerikutnya + 1;
