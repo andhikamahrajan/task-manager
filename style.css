@@ -150,6 +150,24 @@ input:focus-visible {
   padding: 0;
 }
 
+.kosong {
+  padding: 48px 24px;
+  text-align: center;
+  border-top: 1px solid var(--garis);
+}
+
+.kosong h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+.kosong p {
+  margin: 0;
+  color: var(--teks-redup);
+  line-height: 1.5;
+}
+
 .tugas {
   display: flex;
   align-items: center;

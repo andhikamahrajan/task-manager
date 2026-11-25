@@ -51,6 +51,7 @@ function perbaruiSisa() {
 }
 
 const elDaftar = document.getElementById("daftar");
+const elKosong = document.getElementById("kosong");
 let filterAktif = "semua";
 const tombolFilter = document.querySelectorAll(".filter button");
 
@@ -96,7 +97,7 @@ function formatTenggat(tenggat) {
 
 function tampilkanDaftar() {
   elDaftar.innerHTML = "";
-
+  let jumlahTampil = 0;
   for (let i = 0; i < daftarTugas.length; i++) {
     const tugas = daftarTugas[i];
     if (filterAktif === "aktif" && tugas.selesai) {
@@ -125,9 +126,10 @@ if (filterAktif === "selesai" && !tugas.selesai) {
     if (teksTenggat === "Hari ini") {
       badge.classList.add("badge-hari-ini");
     }
-
+    jumlahTampil = jumlahTampil + 1;
     elDaftar.appendChild(li);
   }
+  elKosong.hidden = jumlahTampil > 0;
  perbaruiSisa();
  perbaruiFilter();
  simpanData();
